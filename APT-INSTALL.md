@@ -60,6 +60,9 @@ godotjs --display-driver x11 --rendering-driver vulkan --rendering-method mobile
 
 ## 维护者说明
 
+2026-09-28 已使用隔离的 Ubuntu APT 配置指定 `aarch64` 架构，对线上 Pages 源完成 `apt update`、候选版本查询及完整 `.deb` 下载校验，SHA-256 一致。测试未向 PC 安装 Termux 包，也不代表手机驱动或程序运行已通过实测。测试入口为 `scripts/test-live-apt.sh`。
+
 私钥不在 GitHub 或 Actions secrets 中。由维护者在受控的本地 GnuPG 目录中运行 `scripts/sign-apt-repo.sh`，提交公钥和已签名的元数据。Actions 只下载已发布 `.deb`、验证哈希与签名，再部署 Pages，不持有签名私钥。
 
 更新包时同时更新 `.github/workflows/apt-pages.yml` 中的 Release URL、文件名和 SHA-256，再重新生成签名索引。索引有效期为 180 天；即使没有新版本，也必须在到期前重新签名。签名密钥有效期为两年；备份私钥与撤销证书，不要将它们放进仓库。不要自动关闭过期检查。
+
