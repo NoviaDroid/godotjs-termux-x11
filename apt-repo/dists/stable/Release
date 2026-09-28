@@ -1,0 +1,16 @@
+Valid-Until: Sat, 27 Mar 2027 09:53:33 +0000
+Architectures: aarch64
+Codename: stable
+Components: main
+Date: Mon, 28 Sep 2026 09:53:33 +0000
+Label: GodotJS-Termux
+Origin: GodotJS-Termux
+Suite: stable
+MD5Sum:
+ a18c040a48c1d9b99c424816e53f5083              607 main/binary-aarch64/Packages
+SHA1:
+ e24460eac1225c4214e0f0719b7a3ad439f4577a              607 main/binary-aarch64/Packages
+SHA256:
+ 3b2cffc6d2797e9e0ee62ab5cd63cfa5a81306f4fd8ab391b0d68e954fec4732              607 main/binary-aarch64/Packages
+SHA512:
+ 5207dc317fc2638f6427bbf6d01c441a915709b45e4cfb69a97a332ef562c2d760dea749885a963d035b072d0b32ad173f2d37f62599b73b2a7df6ed25e3814f              607 main/binary-aarch64/Packages

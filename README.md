@@ -26,6 +26,8 @@ docker exec godotjs-rebuild bash -lc \
 
 ## 手机安装及启动
 
+**推荐：[添加签名 APT 软件源](APT-INSTALL.md)**。首次配置后即可 `apt install godotjs`，以后用 APT 更新，无需每次手动下载 `.deb`。
+
 预编译安装包与整套脚本见 [Releases](https://github.com/NoviaDroid/godotjs-termux-x11/releases)。当前为待手机实测的预发布版本。给手机端助手的验收步骤见 [PHONE-HANDOFF.md](PHONE-HANDOFF.md)。
 
 先准备正在运行的 Termux:X11 / XFCE，以及适用于裸 Termux 的 Mesa Zink / Turnip。不要安装 Ubuntu 的 glibc 驱动包。

@@ -1,0 +1,6 @@
+/_site/
+/apt-repo/pool/
+*.gpg
+!apt-repo/dists/stable/Release.gpg
+*.kbx
+private-keys-v1.d/

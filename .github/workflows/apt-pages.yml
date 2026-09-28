@@ -1,0 +1,47 @@
+name: Publish signed Termux APT repository
+on:
+  push:
+    branches: [main]
+    paths: ['apt-repo/**', '.github/workflows/apt-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: apt-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Assemble and verify signed repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/pool/main/g/godotjs
+          cp -a apt-repo/. _site/
+          curl -fL --retry 3 \
+            https://github.com/NoviaDroid/godotjs-termux-x11/releases/download/v4.6.1-qjsng-termux.1/godotjs_4.6.1-1_aarch64.deb \
+            -o _site/pool/main/g/godotjs/godotjs_4.6.1-1_aarch64.deb
+          echo 'e6b595f5dbe984d76aa0d62088942ff73089e34420be9394e23b672ec83a7c60  _site/pool/main/g/godotjs/godotjs_4.6.1-1_aarch64.deb' | sha256sum -c -
+          gpg --batch --dearmor --output /tmp/godotjs-repo.gpg _site/repo-key.asc
+          gpgv --keyring /tmp/godotjs-repo.gpg _site/dists/stable/InRelease
+          gpgv --keyring /tmp/godotjs-repo.gpg _site/dists/stable/Release.gpg _site/dists/stable/Release
+          python3 scripts/verify-apt-repo.py _site
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

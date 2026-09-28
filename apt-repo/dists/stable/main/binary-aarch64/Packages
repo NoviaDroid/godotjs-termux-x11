@@ -1,0 +1,14 @@
+Package: godotjs
+Version: 4.6.1-1
+Architecture: aarch64
+Maintainer: @termux
+Installed-Size: 152616
+Depends: ca-certificates, fontconfig, libandroid-execinfo, libc++, libxcursor, libxi, libxinerama, libxkbcommon, libxrandr, opengl, pulseaudio, sdl3, vulkan-loader-generic
+Filename: pool/main/g/godotjs/godotjs_4.6.1-1_aarch64.deb
+Size: 60994190
+MD5sum: 7d8205c00fd0ebd831a511e77f1cefce
+SHA1: c0e8518c402a9bc9222daadb5e485b5b02c66ccb
+SHA256: e6b595f5dbe984d76aa0d62088942ff73089e34420be9394e23b672ec83a7c60
+Homepage: https://github.com/godotjs/GodotJS
+Description: Godot 4.6.1 with QuickJS-NG for Termux X11
+
