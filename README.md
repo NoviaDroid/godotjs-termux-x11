@@ -26,6 +26,8 @@ docker exec godotjs-rebuild bash -lc \
 
 ## 手机安装及启动
 
+预编译安装包与整套脚本见 [Releases](https://github.com/NoviaDroid/godotjs-termux-x11/releases)。当前为待手机实测的预发布版本。给手机端助手的验收步骤见 [PHONE-HANDOFF.md](PHONE-HANDOFF.md)。
+
 先准备正在运行的 Termux:X11 / XFCE，以及适用于裸 Termux 的 Mesa Zink / Turnip。不要安装 Ubuntu 的 glibc 驱动包。
 
 ```bash
